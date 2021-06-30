@@ -1,6 +1,5 @@
 import * as _ from 'lodash';
-// import { cpus, homedir } from 'os';
-import { homedir } from 'os';
+import { cpus, homedir } from 'os';
 import { ConfigType } from './types/Config';
 import parseArgv from './utils/parseArgv';
 let program = parseArgv([], ['config']);
@@ -61,7 +60,7 @@ const Config = function(): ConfigType {
     dbPort: process.env.DB_PORT || '27018',
     dbUser: process.env.DB_USER || 'spo',
     dbPass: process.env.DB_PASS || '123457',
-    numWorkers: 1,
+    numWorkers: cpus().length,
     startBlockHeight: 688640,
     startBlockHash: '0000000000000000000ae5388eadfb19cf1aeba4d94b6460eea9f47759a382bc',
 

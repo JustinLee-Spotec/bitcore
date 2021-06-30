@@ -16,6 +16,7 @@ import { IWallet, WalletStorage } from '../../../models/wallet';
 import { IWalletAddress, WalletAddressStorage } from '../../../models/walletAddress';
 import { RPC } from '../../../rpc';
 import { Config } from '../../../services/config';
+import config from '../../../config';
 import { Storage } from '../../../services/storage';
 import { CoinJSON, SpentHeightIndicators } from '../../../types/Coin';
 import {
@@ -598,6 +599,9 @@ export class InternalStateProvider implements IChainStateService {
       .addCursorFlag('noCursorTimeout', true)
       .toArray();
     if (locatorBlocks.length < 2) {
+      if(config.startBlockHash && config.startBlockHash.length > 0) {
+        return [config.startBlockHash];
+      }
       return [Array(65).join('0')];
     }
     return locatorBlocks.map(block => block.hash);

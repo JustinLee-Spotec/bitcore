@@ -9,6 +9,7 @@ import { BaseBlock, IBlock } from './baseBlock';
 import { CoinStorage } from './coin';
 import { EventStorage } from './events';
 import { TransactionStorage } from './transaction';
+import config from '../config';
 
 export type IBtcBlock = IBlock & {
   version: number;
@@ -102,7 +103,8 @@ export class BitcoinBlock extends BaseBlock<IBtcBlock> {
       }
     })();
 
-    const height = (previousBlock && previousBlock.height + 1) || 1;
+    const height = (previousBlock && previousBlock.height + 1) || 
+    (config.startBlockHeight && config.startBlockHeight > 0 ? config.startBlockHeight : 1);
     logger.debug('Setting blockheight: ' + height);
 
     const convertedBlock: IBtcBlock = {

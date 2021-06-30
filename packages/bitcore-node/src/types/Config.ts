@@ -8,6 +8,8 @@ export interface ConfigType {
   dbUser: string;
   dbPass: string;
   numWorkers: number;
+  startBlockHeight: number;
+  startBlockHash: string;
 
   chains: {
     [currency: string]: { [network: string]: any };

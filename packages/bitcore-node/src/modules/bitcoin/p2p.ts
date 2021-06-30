@@ -9,6 +9,7 @@ import { BaseP2PWorker } from '../../services/p2p';
 import { SpentHeightIndicators } from '../../types/Coin';
 import { BitcoinBlockType, BitcoinHeaderObj, BitcoinTransaction } from '../../types/namespaces/Bitcoin';
 import { wait } from '../../utils/wait';
+import config from '../../config';
 
 export class BitcoinP2PWorker extends BaseP2PWorker<IBtcBlock> {
   protected bitcoreLib: any;
@@ -280,7 +281,7 @@ export class BitcoinP2PWorker extends BaseP2PWorker<IBtcBlock> {
     let headers = await getHeaders();
     while (headers.length > 0) {
       tip = await ChainStateProvider.getLocalTip({ chain, network });
-      let currentHeight = tip ? tip.height : 0;
+      let currentHeight = tip ? tip.height : (config.startBlockHeight ? config.startBlockHeight : 0);
       const startingHeight = currentHeight;
       const startingTime = Date.now();
       let lastLog = startingTime;

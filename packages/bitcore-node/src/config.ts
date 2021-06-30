@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
-import { cpus, homedir } from 'os';
+// import { cpus, homedir } from 'os';
+import { homedir } from 'os';
 import { ConfigType } from './types/Config';
 import parseArgv from './utils/parseArgv';
 let program = parseArgv([], ['config']);
@@ -55,12 +56,15 @@ const Config = function(): ConfigType {
     maxPoolSize: 50,
     port: 3000,
     dbUrl: process.env.DB_URL || '',
-    dbHost: process.env.DB_HOST || '127.0.0.1',
-    dbName: process.env.DB_NAME || 'bitcore',
-    dbPort: process.env.DB_PORT || '27017',
-    dbUser: process.env.DB_USER || '',
-    dbPass: process.env.DB_PASS || '',
-    numWorkers: cpus().length,
+    dbHost: process.env.DB_HOST || '192.168.0.129',
+    dbName: process.env.DB_NAME || 'bitcore4',
+    dbPort: process.env.DB_PORT || '27018',
+    dbUser: process.env.DB_USER || 'spo',
+    dbPass: process.env.DB_PASS || '123457',
+    numWorkers: 1,
+    startBlockHeight: 688640,
+    startBlockHash: '0000000000000000000ae5388eadfb19cf1aeba4d94b6460eea9f47759a382bc',
+
     chains: {},
     modules: ['./bitcoin', './bitcoin-cash', './ethereum'],
     services: {
@@ -93,12 +97,12 @@ const Config = function(): ConfigType {
       BTC: {
         mainnet: {
           chainSource: 'p2p',
-          trustedPeers: [{ host: '127.0.0.1', port: 8333 }],
+          trustedPeers: [{ host: '192.168.0.129', port: 8333 }],
           rpc: {
-            host: '127.0.0.1',
+            host: '192.168.0.129',
             port: 8332,
-            username: 'bitcoin',
-            password: 'bitcoin'
+            username: 'spo',
+            password: '132456'
           }
         }
       }

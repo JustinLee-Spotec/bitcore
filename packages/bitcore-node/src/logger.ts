@@ -1,8 +1,8 @@
 import * as winston from 'winston';
-// import parseArgv from './utils/parseArgv';
-// let args = parseArgv([], ['DEBUG']);
-// const logLevel = args.DEBUG ? 'debug' : 'info';
-const logLevel = 'debug';
+import parseArgv from './utils/parseArgv';
+let args = parseArgv([], ['DEBUG']);
+const logLevel = args.DEBUG ? 'debug' : 'info';
+// const logLevel = 'debug';
 const logger = winston.createLogger({
   transports: [
     new winston.transports.Console({

@@ -61,8 +61,8 @@ const Config = function(): ConfigType {
     dbUser: process.env.DB_USER || 'spo',
     dbPass: process.env.DB_PASS || '123457',
     numWorkers: cpus().length,
-    startBlockHeight: 688640,
-    startBlockHash: '0000000000000000000ae5388eadfb19cf1aeba4d94b6460eea9f47759a382bc',
+    startBlockHeight: 689270,
+    startBlockHash: '0000000000000000000b09dd576bb758b60ab9f2a308d7b652af54b6c5508ab8',
 
     chains: {},
     modules: ['./bitcoin', './bitcoin-cash', './ethereum'],

@@ -55,9 +55,9 @@ const Config = function(): ConfigType {
     maxPoolSize: 50,
     port: 3000,
     dbUrl: process.env.DB_URL || '',
-    dbHost: process.env.DB_HOST || '192.168.0.129',
-    dbName: process.env.DB_NAME || 'bitcore4',
-    dbPort: process.env.DB_PORT || '27018',
+    dbHost: process.env.DB_HOST || '127.0.0.1',
+    dbName: process.env.DB_NAME || 'bitcore2',
+    dbPort: process.env.DB_PORT || '27017',
     dbUser: process.env.DB_USER || 'spo',
     dbPass: process.env.DB_PASS || '123457',
     numWorkers: cpus().length,
@@ -96,9 +96,9 @@ const Config = function(): ConfigType {
       BTC: {
         mainnet: {
           chainSource: 'p2p',
-          trustedPeers: [{ host: '192.168.0.129', port: 8333 }],
+          trustedPeers: [{ host: '127.0.0.1', port: 8333 }],
           rpc: {
-            host: '192.168.0.129',
+            host: '127.0.0.1',
             port: 8332,
             username: 'spo',
             password: '132456'

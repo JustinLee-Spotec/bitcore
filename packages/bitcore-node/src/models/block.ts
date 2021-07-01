@@ -104,7 +104,7 @@ export class BitcoinBlock extends BaseBlock<IBtcBlock> {
     })();
 
     const height = (previousBlock && previousBlock.height + 1) || 
-    (config.startBlockHeight && config.startBlockHeight > 0 ? config.startBlockHeight : 1);
+    (config.startBlockHeight && config.startBlockHeight > 0 ? config.startBlockHeight + 1 : 1);
     logger.debug('Setting blockheight: ' + height);
 
     const convertedBlock: IBtcBlock = {

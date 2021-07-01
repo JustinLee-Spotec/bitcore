@@ -8,7 +8,7 @@ export interface ConfigType {
   dbUser: string;
   dbPass: string;
   numWorkers: number;
-  startBlockHeight: number;
+  startBlockHeight: number; // will start from startBlockHeight+1
   startBlockHash: string;
 
   chains: {
